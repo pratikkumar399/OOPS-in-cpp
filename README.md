@@ -1,4 +1,5 @@
 # OOPS-in-c-
+#Link of the blog - https://kontentkreator.tech/object-oriented-programming-in-cpp/
 Hello , everyone welcome to the blog . Today I am going to discuss Object Oriented Programming in C++ . This article will briefly discuss everything you need to know about OOP's in c++ .
 
 Some terms that are very important in C++ - 
