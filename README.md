@@ -1,196 +1,498 @@
-# OOPS-in-cpp
-#Link of the blog - https://kontentkreator.tech/object-oriented-programming-in-cpp/
-Hello , everyone welcome to the blog . Today I am going to discuss Object Oriented Programming in C++ . This article will briefly discuss everything you need to know about OOP's in c++ .
+# OOPS in C++
 
-Some terms that are very important in C++ - 
-1. Class 
-2. Objects 
-3. Encapsulation
-4. Abstraction
-5. Inheritence 
-6. Polymorphism 
+Hello everyone, and welcome to this blog post. Today, we will discuss Object-Oriented Programming (OOP) in C++. This article will provide a brief overview of the essential concepts in OOP in C++.
 
+## Introduction to OOP
 
-We will visit every topic one by one and understand what they actually mean . Also, I will be sharing with you snippets of code to help you understand the topics easily . So , lets get started .
+Object-Oriented Programming is all about objects. In C++, unlike in C, we can use OOP to create objects that encapsulate both data members and functions into a single entity. Let's dive into the key terms in C++ OOP:
 
-Introduction to OOPS - 
+1. **Class**: A class is a fundamental building block in OOP. It contains both data members and functions. For example, a class "Car" may have properties like color and weight, as well as methods like drive and brake.
 
-After hearing this word Object-oriented , you might have got an idea , what it is all about . Yes, you guessed it right . It's all about objects . Objects are used to implement different scenarios from the real world . 
-If you have used C , then you might have noticed that it uses functions and procedures to implement different things(that is why it is also called procedural language) . But in C++ we can use OOPS to create objects that can have both the data members and functions in a single entity . 
-As you will get to know the concepts of OOPS , it will become easier for you to understand , the idea behind it's usage.
+2. **Objects**: An object is an instance of a class. Each object has its own set of data members and can access the class's methods. For instance, a Mercedes, an Audi, and a Nano could be objects of the Car class.
 
-I will discuss the advantages of OOPS in the later part of this article , so that you can understand , what it means to use OOPS language . 
+3. **Encapsulation**: Encapsulation is the concept of bundling data members and methods within a class, hiding sensitive information and exposing only what is necessary. Access specifiers (public, private, protected) control the accessibility of class members.
 
-1. CLASS - This is where the concepts of OOPS begin . A class is a block where you can write both data members and functions inside it . Let us try to understand this with an example - 
-Take car as a CLASS . Now the car has certain properties(or attributes) , like color and  weight . And the car can move by its own method like drive and brake . So , basically , you can say that the color and weight properties are the data members of the class , while the drive and brake options are functions of the class CAR . 
+4. **Abstraction**: Abstraction involves hiding complex implementation details and providing a simplified interface for users. It allows users to focus on the essential features of an object or system. Private access modifiers are used to achieve data abstraction or data hiding.
 
-So , a class is a basic buliding block which contains both data members and functions . With the use of these functions we can get access to the data members and manipulate them according to our needs . The concept of classes will be more clear when , we will get to know more about objects, and different properties of class .
+5. **Inheritance**: Inheritance allows a class to inherit properties and characteristics from another class. It promotes code reuse and establishes a parent-child relationship between classes. The child class (derived class) inherits features from the parent class (base class).
 
-2.Objects - In the previous example we shaw that we have a car as a class and it has different properties like color , weight . Also it has its method like drive and brake . Now, when you  go to buy a car , you see that different car has different properties . So , different cars such as Mercedes , Audi , Nano , etc are objects of class CAR , and they have their own characteristics and behaviour . So , an object is an instance of a class . 
-When we define a class , no memory is allocated , but when we create an object of the class , a block of memory gets allocated to it . So, a class gets memory block when it gets instantiated. 
-Every object of a class has their own copy of the data members and we can create as many obejects we want .
-To access the methods of the class use the dot operator (.) , along with the object .
+6. **Polymorphism**: Polymorphism refers to the ability of a function or method to take different forms depending on the context. There are two types of polymorphism in C++: compile-time polymorphism (function overloading) and runtime polymorphism (function overriding).
 
-A code snippet to show how a class and an object is programmed in CPP - 
+In the upcoming sections, we will delve deeper into each of these topics, providing code snippets and examples to enhance understanding.
 
-#include<bits/stdc++.h>
-using namespace std ;
+## Class and Object Example
 
-class Car{
-   int color , weight ;   // data members of the class 
-   
+Let's begin with a code snippet illustrating a class and an object in C++:
 
-//    The below methods are called the functions of the class Car
-   void drive(){
-       cout<<"Drive the car"<<endl;
-   }
-   void brake(){
-       cout<<"Stop the car"<<endl;
-   }
+```cpp
+#include <iostream>
+using namespace std;
+
+class Car {
+   private:
+    int color;
+    int weight;
+
+   public:
+    void drive() {
+        cout << "Drive the car" << endl;
+    }
+
+    void brake() {
+        cout << "Stop the car" << endl;
+    }
 };
 
-int main(){
-  Car obj1 ; // creating the object of the class 
-  obj1.drive() ; // calling the functions of the class 
- obj1.brake() ;  // calling the functions of the class to call the brake function
+int main() {
+    Car obj1;
+    obj1.drive();
+    obj1.brake();
     return 0;
 }
 
-So, we can say that a class is a blueprint which represents a group of objects , which share common properties and methods .
+```
 
-3.Encapsulation -  To understand the concept of encapsulation , first let us understand access specifiers . 
+## Encapsulation
 
-Access modifiers helps us to decide, how the member functions can be accessed outside the class . 
-There are three access modifiers used in C++ - 
-   a)  Private 
-   b) Public 
-   c) Protected 
+To understand the concept of encapsulation, let's first understand access specifiers.
 
--> When something is declared public : data members can be accessible outside of the class  .
-class Public
-{
-    // public access modifier
-    public:   
-    int x;            
-    void show();  
-}
--> When something is declared private : data members cannot be accessed outside 
- the class .
-class Private
-{
-    // private access modifier
-    private:   
-    int x;            
-    void show();   
-}
- 
--> When something is declared protected : data members can only be accessed inside the inherited(discussed later)  classes .  
-class Protected
-{
-    // protected access modifier
-    protected: 
-    int x;            
-    void display();  
-}
+Access modifiers help us decide how the member functions can be accessed outside the class. In C++, there are three access modifiers:
 
+- **Private**: Data members declared as private cannot be accessed outside the class.
 
-In c++ the data members of a class are public by default. 
+```cpp
+class Private {
+private:
+    int x;
+    void show();
+};
+```
 
-Now , let us discuss what encapsulation actually means . 
-Suppose, you are working on a software, and you don't want to make the backend parts of the software visible to users.. 
-Encapsulation hides the sensitive information. It can be defined as an entity which
-binds data members and entity in a single information. This further helps us to achieve data abstraction or data hiding .
+- **Public**: Data members declared as public can be accessed outside the class.
 
-4. Abstraction - It means hiding the sensitive information and showing only the essential information to the user , or outside world .So , with abstraction only important information is visible and all the background details are hidden  . 
+```cpp
+class Public {
+public:
+    int x;
+    void show();
+};
+```
 
-We can use the private access modifier in a class to hide the important information.
-Therefore, we can decide which data members will be visible to outside world and which is not .
+- **Protected**: Data members declared as protected can only be accessed inside the inherited classes.
 
-5. Inheritence  -  Suppose that we want to share some properties and characteristics of one class in another . In that case, we do not need to make another class with same set of variables and methods again . We have a concept called inheritence in OOPS , which allows us to do this. It simply means inheriting the methods and attributes from the another class. You might have heard of concept of inheriting properties in families . Similarly here , the class which inherits from another class is known as child class or derived class. And the class from which the properties are being inherited , are known as parent or base class . Thus, one can say that inheritence allows us reuse the existing class instead of creating a new one . 
+```cpp
+class Protected {
+protected:
+    int x;
+    void display();
+};
+```
 
-Example of inheritence  : 
+In C++, the data members of a class are public by default.
 
-#include <bits/stdc++.h>
+Now, let's discuss what encapsulation actually means. Encapsulation is the practice of hiding sensitive information. It can be defined as an entity that binds data members and methods into a single unit. This further helps us achieve data abstraction or data hiding.
+
+## Abstraction
+
+Abstraction means hiding the sensitive information and showing only the essential information to the user or the outside world. With abstraction, only important information is visible, while all the background details are hidden.
+
+We can use the private access modifier in a class to hide important information. Therefore, we can decide which data members will be visible to the outside world and which ones will not.
+
+## Inheritance
+
+Inheritance is a concept in object-oriented programming (OOP) that allows us to share properties and characteristics of one class in another. It eliminates the need to create another class with the same set of variables and methods. The class that inherits from another class is known as the child class or derived class, while the class from which the properties are being inherited is known as the parent class or base class. Inheritance allows us to reuse the existing class instead of creating a new one.
+
+Here's an example of inheritance in C++:
+
+```cpp
+#include <iostream>
 
 using namespace std;
-class vehicle
-{
+
+class Vehicle {
 public:
-    vehicle()
-    {
-        cout << "This is a vehicle " << endl;
-    }
-};
-class car : vehicle
-{
-public:
-    car()
-    {
-        cout << "This is a car " << endl;
+    Vehicle() {
+        cout << "This is a vehicle." << endl;
     }
 };
 
-int main()
-{
-    car obj;
+class Car : public Vehicle {
+public:
+    Car() {
+        cout << "This is a car." << endl;
+    }
+};
+
+int main() {
+    Car obj;
     return 0;
 }
+```
 
-Note  : Use : (colon)  to inherit a class .
+In the above code, the `Car` class inherits from the `Vehicle` class using the `public` visibility mode. The `public` visibility mode means that all the public members of the base class become public members of the child class. In this case, the output will be:
 
-Now , when we read about abstraction and encapsulation, you might have noticed that we discussed about data hiding . Inheritence has a very special role to play in this .
+```
+This is a vehicle.
+This is a car.
+```
 
-In the above code notice that after colon we have simply wrote the name of base class, the class from which we want to inherit . There is a thing called visibility mode i inheritence. This means we can inherit the classes publicly or privately. 
-The default visibility mode is private . 
+Please note that the private members of the base class are never inherited.
 
-Take a look at the code below : 
+Note: Use a colon (`:`) to inherit a class.
 
-class car : public  vehicle
+When discussing abstraction and encapsulation, we mentioned data hiding. Inheritance plays a significant role in achieving this.
+
+In the code example above, after the colon, we simply write the name of the base class from which we want to inherit. Inheritance in C++ has a concept called visibility mode. This means we can inherit classes publicly or privately. By default, the visibility mode is private.
+
+Consider the following code:
+
+```cpp
+class Car : public Vehicle
 {
 public:
-    car()
+    Car()
     {
-        cout << "This is a car " << endl;
+        cout << "This is a car" << endl;
+    }
+};
+```
+
+In the above code, notice the use of the `public` keyword after the colon. This is the visibility mode and it determines how we inherit our classes. If we inherit in the public mode, all the public members of the base class become public members of the child class. In the case of private mode, all the public members of the base class become private in the child class. In this case, objects of the derived class cannot access the members of the base class. It's important to remember that private members of the base class are never inherited.
+
+Inheritance is further divided into five types:
+
+a) Single Inheritance: There is only one derived class derived from the base class.
+b) Multiple Inheritance: Deriving a single class from multiple base classes is called multiple inheritance.
+c) Hierarchical Inheritance: Multiple classes are derived from a single base class.
+d) Multilevel Inheritance: One class derived from another class results in multilevel inheritance.
+e) Hybrid Inheritance: It refers to a combination of multiple types of inheritance under one roof.
+
+## Polymorphism
+
+Polymorphism is an essential concept in OOP. It allows a function or method to have different forms depending on the type of object it is invoked with. Similar to how a cricket coach can be a father to someone, a husband to someone else, and a brother to another person, polymorphism allows methods to have different forms based on the calls they receive.
+
+In C++, there are two types of polymorphism:
+
+1. Run-time Polymorphism: In run-time polymorphism, the methods to be executed are decided at runtime. If the number of arguments passed and the method name is the same, the appropriate method is determined at runtime.
+
+2. Compile-time Polymorphism: In compile-time polymorphism, the methods are invoked depending on the number of parameters. The function that matches the call is the one that runs during compile time.
+
+
+### Run-time Polymorphism (Virtual Functions)
+
+```cpp
+#include <iostream>
+
+class Shape {
+public:
+    virtual void draw() {
+        std::cout << "Drawing a shape." << std::endl;
     }
 };
 
-Notice , how the public word has been used after the colon . This is called the visibility mode and it decides how we want to inherit our classes .
-If we inherit it in public mode , then all the public members of the base class become
-public class of the child class. While in the case of private mode , all the public members of the base class becomes private in the child class . In that case , the objects of the derived class cannot access the members of the base class  .
-Always remember, that the private member of the base class are never inherited . 
+class Circle : public Shape {
+public:
+    void draw() override {
+        std::cout << "Drawing a circle." << std::endl;
+    }
+};
 
+class Rectangle : public Shape {
+public:
+    void draw() override {
+        std::cout << "Drawing a rectangle." << std::endl;
+    }
+};
 
-Inheritence has been further divided into 5 types  :
- 
-a). Single inheritence 
-b). Multiple inheritence 
-c). Hierarchical inheritence 
-d). Multilevel inheitence 
-e). Hybrid inheritence 
+int main() {
+    Shape* shape1 = new Circle();
+    Shape* shape2 = new Rectangle();
 
-a). Single Inheritence - There is only one derived class, derived from the base class.
-b). Multiple inheritence - Deriving a single class from a single base class is called multiple inheritence.
-c).Heirarchical inheritance-  Multiple classes are derived from a single base class .
-d).Multilevel inheritence - One class derived from another class gives result to multilevel inheritence . 
-e).Hybrid Inheritance - It can be said as multiple types of inheritance under one roof .
+    shape1->draw(); // Calls draw() method of Circle class
+    shape2->draw(); // Calls draw() method of Rectangle class
 
-6.Polymorphism - Polymorphism is also a very important topic in OOPS. Due to this property a function or method can have different forms depending upon the type they are invoked . You might have seen that a cricket coach can be father to someone , husband for someone and brother for another. Similarly polymorphism allows methods to have different forms depending upon the calls they are given .
+    delete shape1;
+    delete shape2;
 
-In C++ there are two types of polymorphism - 
+    return 0;
+}
+```
 
-1. Run time polymorphism 
-2. Compile time polymorphism 
+In the above code, we define a base class `Shape` and two derived classes `Circle` and `Rectangle`. The `Shape` class has a virtual method `draw()`. In the `main()` function, we create pointers of type `Shape` and assign objects of derived classes to them. When we call the `draw()` method using these pointers, the appropriate method based on the actual object type is called. This is run-time polymorphism as the decision on which method to invoke is made at runtime based on the object's type.
 
-In compile time polymorphism , the methods are invoked depending upon the number of parameters . The function which matches the call is the one which runs during compile time . 
+### Compile-time Polymorphism (Function Overloading)
 
-What if the number of arguements passed and the method name is same . Then there comes the importance of run- time polymorphism  . The methods to be run are decided at runtime , and hence the name .
+```cpp
+#include <iostream>
 
+int add(int a, int b) {
+    return a + b;
+}
 
+double add(double a, double b) {
+    return a + b;
+}
 
+int main() {
+    int result1 = add(3, 4);           // Calls the first add() function
+    double result2 = add(2.5, 3.7);    // Calls the second add() function
 
+    std::cout << "Result 1: " << result1 << std::endl;
+    std::cout << "Result 2: " << result2 << std::endl;
 
+    return 0;
+}
+```
 
+In the above code, we have two functions named `add()` with different parameter types. One takes two integers as arguments, and the other takes two doubles. When we call the `add()` function with different argument types, the appropriate function is selected at compile time based on the argument types. This is compile-time polymorphism as the decision on which function to call is made during the compilation process.
 
+> ## **Lets explore some more important concepts of OOPS:** 
 
+1. `this`: It is a pointer that refers to the current instance of a class. It is used to access the members of the class within its member functions.
 
+```cpp
+class Person {
+public:
+    void printName() {
+        cout << "Name: " << this->name << endl;
+    }
+private:
+    string name;
+};
+```
 
+2. `const`: It is used to declare constants or to specify that a member function does not modify the object's state. `const` objects cannot modify their member variables.
+
+```cpp
+class Circle {
+public:
+    Circle(double radius) : radius(radius) {}
+    double getArea() const {
+        return 3.14159 * radius * radius;
+    }
+private:
+    const double radius;
+};
+```
+
+3. `static`: It is used to declare class-level variables or methods that are shared among all instances of the class. Static members can be accessed without creating an object of the class.
+
+```cpp
+class Counter {
+public:
+    static int count;  // static member variable
+    static void increment() {
+        count++;
+    }
+};
+
+int Counter::count = 0;  // static member variable definition
+
+int main() {
+    Counter::increment();  // accessing static member function
+    cout << "Count: " << Counter::count << endl;  // accessing static member variable
+    return 0;
+}
+```
+
+4. `friend`: It is used to declare a function or class as a friend of another class. A friend function or class can access the private and protected members of the class.
+
+```cpp
+class Circle {
+private:
+    double radius;
+public:
+    Circle(double r) : radius(r) {}
+    friend class Cylinder;  // Cylinder class is a friend of Circle
+};
+
+class Cylinder {
+public:
+    double getVolume(const Circle& circle) {
+        double height = 10.0;
+        return 3.14159 * circle.radius * circle.radius * height;
+    }
+};
+
+int main() {
+    Circle circle(5.0);
+    Cylinder cylinder;
+    cout << "Volume: " << cylinder.getVolume(circle) << endl;
+    return 0;
+}
+```
+
+5. `virtual`: It is used to declare a virtual function in the base class. Virtual functions can be overridden in derived classes, and the appropriate function is called based on the actual object type during run-time polymorphism.
+
+```cpp
+class Shape {
+public:
+    virtual void draw() {
+        cout << "Drawing a shape." << endl;
+    }
+};
+
+class Circle : public Shape {
+public:
+    void draw() override {
+        cout << "Drawing a circle." << endl;
+    }
+};
+
+int main() {
+    Shape* shape = new Circle();
+    shape->draw();  // Calls the overridden function in the Circle class
+    delete shape;
+    return 0;
+}
+```
+
+6. `override`: It is used to explicitly indicate that a member function is intended to override a virtual function from the base class. It helps in preventing accidental errors and improves code readability.
+
+```cpp
+class Shape {
+public:
+    virtual void draw() {
+        cout << "Drawing a shape." << endl;
+    }
+};
+
+class Circle : public Shape {
+public:
+    void draw() override {  // Explicitly marked as an override
+        cout << "Drawing a circle." << endl;
+    }
+};
+
+int main() {
+    Shape* shape = new Circle();
+    shape->draw();  // Calls the overridden function in the Circle class
+    delete shape;
+    return 0;
+}
+```
+
+7. `constructor` and `destructor`: Constructors are special member functions used for initializing objects of a class.
+
+ They have the same name as the class and do not have a return type. Destructors are used to clean up the resources allocated by an object when it goes out of scope or is explicitly destroyed.
+
+```cpp
+class Person {
+public:
+    Person(const string& name) : name(name) {
+        cout << "Person constructor called." << endl;
+    }
+    ~Person() {
+        cout << "Person destructor called." << endl;
+    }
+private:
+    string name;
+};
+
+int main() {
+    Person person("Pratik");  // Constructor called
+    // ...
+    // Other code
+    // ...
+    return 0;  // Destructor called
+}
+```
+
+8. `new` and `delete`: These are operators used for dynamic memory allocation and deallocation, respectively. `new` is used to allocate memory for an object on the heap, and `delete` is used to deallocate the memory and destroy the object.
+
+```cpp
+class Rectangle {
+public:
+    Rectangle(double w, double h) : width(w), height(h) {}
+    double calculateArea() {
+        return width * height;
+    }
+};
+
+int main() {
+    Rectangle* rect = new Rectangle(5.0, 10.0);  // Dynamic memory allocation
+    double area = rect->calculateArea();
+    cout << "Area: " << area << endl;
+    delete rect;  // Memory deallocation
+    return 0;
+}
+```
+
+### Cohesion and Coupling in OOPs 
+
+Cohesion and coupling are important concepts in software engineering that describe the relationships and interactions between different components or modules of a program. In C++, cohesion and coupling play a crucial role in designing and maintaining software systems. 
+
+1. Cohesion: Cohesion refers to the degree of relatedness or unity among the members of a module or class. It measures how closely the responsibilities and functionalities of a module or class are related to each other. High cohesion is desirable as it indicates that the members of a module work together towards a common purpose, leading to more maintainable and understandable code.
+
+Types of cohesion in C++:
+- Functional cohesion: Members of a module or class work together to perform a single function or task.
+- Sequential cohesion: Members are organized in a sequential order, where the output of one member becomes the input for the next member.
+- Communicational cohesion: Members operate on the same data or communicate closely with each other.
+- Temporal cohesion: Members are called in a specific order or within a specific time frame.
+- Procedural cohesion: Members are grouped based on a common procedural logic or algorithm.
+
+Example of high cohesion:
+```cpp
+class FileManager {
+public:
+    void openFile(const string& filename) {
+        // Code to open a file
+    }
+    
+    void readFile() {
+        // Code to read data from the file
+    }
+    
+    void closeFile() {
+        // Code to close the file
+    }
+};
+```
+
+In the above example, all the methods in the `FileManager` class are closely related to file handling operations. They work together towards the common purpose of managing files, indicating high cohesion.
+
+2. Coupling: Coupling refers to the degree of interdependence between different modules or classes in a system. It measures how closely one module relies on or knows about the internals of another module. Low coupling is desirable as it promotes modularity, reusability, and maintainability of code.
+
+Types of coupling in C++:
+- Tight coupling: Modules are highly dependent on each other, making changes in one module impact others significantly.
+- Loose coupling: Modules have minimal or no knowledge of the internal workings of other modules, reducing the impact of changes.
+- Content coupling: Modules share internal data directly, leading to high dependency.
+- External coupling: Modules depend on externally defined data or interfaces.
+- Control coupling: Modules control the behavior of other modules through parameters or flags.
+
+Example of low coupling:
+```cpp
+class Database {
+public:
+    void insertData(const Data& data) {
+        // Code to insert data into the database
+    }
+};
+
+class Logger {
+public:
+    void logMessage(const string& message) {
+        // Code to log a message
+    }
+};
+
+class DataManager {
+public:
+    DataManager(Database& db, Logger& logger)
+        : database(db), logger(logger) {}
+    
+    void processData(const Data& data) {
+        // Process the data
+        database.insertData(data);
+        logger.logMessage("Data processed successfully");
+    }
+    
+private:
+    Database& database;
+    Logger& logger;
+};
+```
+
+In the above example, the `DataManager` class depends on the `Database` and `Logger` classes through their interfaces (references). It has no knowledge of the internal implementation details of the other classes, promoting loose coupling.
+
+By considering both cohesion and coupling, you can design software systems that are more modular, maintainable, and extensible, leading to better code quality and easier development and maintenance.
